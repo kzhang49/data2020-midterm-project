@@ -88,7 +88,7 @@ The adjusted R-squared for linear regression is 0.8534, which indicates our line
     
     For Income Per capita, we also duplicated the stepwise forward method utilizing the 19 predictors. The model displayed 15 most influential predictors: “ County”, “Hispanic”, “Black”, “Citizen”, “Poverty”, “Professional”, “Production”, “Carpool”,  “Walk”, “OtherTransp”, “WorkAtHome”, “MeanCommute”, “PublicWork”, “SelfEmployed”, and “Unemployment”. As a result, the optimal MSE is 168,289,557. Comparing to Income prediction, Income per capita has a lower MSE in stepwise forward model. The 5 additional predictors that are significant to Income per capita are “Production”, “Carpool”, “MeanCommute”, “SelfEmployed”, and “Unemployment”, and 1 insignificant predictor that is influential to Income above is “Drive”. 
     
-    **_Comparing the MSE of these models, we choose Lasso regression to do the prediction._**
+ **_Comparing the MSE of these models, we choose Lasso regression to do the prediction._**
     
 # Visualization
   [**Click here to open map link**](https://kzhang49.github.io/data2020-midterm-project/map.html)
