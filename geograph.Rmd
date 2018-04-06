@@ -1,0 +1,73 @@
+---
+output:
+  html_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### NYC and Surrounding Area's Income Per Capital Accordin to Geo-location
+
+Note: The size of a single circle indicates the rate of the unemployment. The larger the radius of the circle, the greater rate of the unemployment. 
+
+```{r echo=FALSE}
+library(leaps)
+#Read in data
+census_loc = read.csv("census_tract_loc.csv", header = TRUE)
+census = read.csv("nyc_census.csv", header = TRUE)
+string_vec = census_loc$BlockCode
+census_loc$CensusTract = substr(string_vec, 1, nchar(string_vec)-4)
+loc_data = data.frame(census_loc)
+census_data =data.frame(census)
+graph_data = merge(x = census_data, y = loc_data, by = "CensusTract", all.x = TRUE)
+graph_data = graph_data[complete.cases(graph_data), ]
+graph_data = graph_data[!duplicated(graph_data[,1]), ]
+for (i in seq_along(graph_data$IncomePerCap)){
+  item = as.integer(graph_data$IncomePerCap[i])
+  if(item > 0 & item <=10000){
+    graph_data$PerCapCategory[i] = "< $10,000"
+  } else if(item > 10000 & item <= 50000){
+    graph_data$PerCapCategory[i] = "$10,000 - $50,000"
+  } else if(item > 50000 & item <= 80000){
+    graph_data$PerCapCategory[i] = "$50,000 - $80,000"
+  } else { 
+    graph_data$PerCapCategory[i] = "$80,000 or above"
+  }
+}
+
+for (i in seq_along(graph_data$Unemployment)){
+  item = as.integer(graph_data$Unemployment[i])
+  if(item > 0 & item <=5){
+    graph_data$unemployCat[i] = 5
+  } else if(item > 5 & item <= 12){
+    graph_data$unemployCat[i] = 9
+  } else if(item > 12 & item <= 24){
+    graph_data$unemployCat[i] = 13
+  } else {
+    graph_data$unemployCat[i] = 17
+  }
+}
+
+library(leaflet)
+library(sp)
+factpal <- colorFactor(c("navy","purple","red","darkgreen"), graph_data$PerCapCategory)
+m <- leaflet(graph_data) %>% addTiles() %>% 
+  addProviderTiles(providers$OpenStreetMap)%>%
+  addCircleMarkers(lng = ~Longitude, lat = ~Latitude, 
+             popup=~ paste("Income per capital: ",as.character(IncomePerCap)),
+             color=~factpal(PerCapCategory),
+             radius=~unemployCat,
+             clusterOptions = markerClusterOptions()
+            ) %>%
+  addLegend("topright", pal = factpal, values = ~PerCapCategory,
+            title = "Income Per Capital",
+            opacity = 1
+  )
+  
+m  # Print the map
+
+library(htmlwidgets)
+saveWidget(m, file="index.html")
+```
