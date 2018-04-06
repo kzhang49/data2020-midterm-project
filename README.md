@@ -20,10 +20,12 @@ We wanted to answer these questions after studying and visualizing this data.
   - Ridge Regression
   - Lasso Regression
   - Stepwise Regression
+  
 - **Visualization**: We use census_tract_loc.csv which contains latitude, longitude, county and state to generate an interactive geo graph.
 
 # Analysis
 
 # Visualization
-[map](https://kzhang49.github.io/data2020-midterm-project/map.html)
+[**Click here to open map link**](https://kzhang49.github.io/data2020-midterm-project/map.html)
 
+# Code
