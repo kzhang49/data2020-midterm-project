@@ -11,9 +11,8 @@
 First, we explored the relationships between the features and the target: Income. We picked some features that we think are important, and draw graphs to better demonstrate the relationships. 
 
 1) Income: The income is distributed as below.
-<img src="https://raw.githubusercontent.com/kzhang49/data2020-midterm-project/blob/master/pics/Income.png" alt="https://raw.githubusercontent.com/kzhang49/data2020-midterm-project/blob/master/pics/Income.png">   
-
-![alt text](https://raw.github.com/kzhang49/data2020-midterm-project/blob/master/pics/Income.png)
+  
+![alt](https://i.imgur.com/0RmZxp9.png)
 The five counties, Bronx, Kings, New York, Queens and Richmond are represented by label “1, 2, 3, 4, 5”. We can see that New York has highest income and the distribution of its income is more spread out than others. While Bronx and Richmond have relatively lower income. We can tell that County is a good candidate for the features we can use in the model.
 
 2) Poverty and ChildPoverty: The Poverty and ChildPoverty are distributed as below.
