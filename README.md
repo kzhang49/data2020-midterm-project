@@ -21,6 +21,7 @@
     - Lasso Regression
     - Stepwise Regression
   
+  
   - **Visualization**: We use census_tract_loc.csv which contains latitude, longitude, county and state to generate an interactive geo graph.
 
 # Analysis
@@ -28,6 +29,8 @@
 # Visualization
   [**Click here to open map link**](https://kzhang49.github.io/data2020-midterm-project/map.html)
 
+
 # Code
   [Visualization code](https://github.com/kzhang49/data2020-midterm-project/blob/master/geograph.Rmd)
+  
   [Model code](https://github.com/kzhang49/data2020-midterm-project/blob/master/midterm_project.Rmd)
