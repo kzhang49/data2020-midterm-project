@@ -21,7 +21,6 @@
     - Lasso Regression
     - Stepwise Regression
   
-  
   - **Visualization**: We use census_tract_loc.csv which contains latitude, longitude, county and state to generate an interactive geo graph.
 
 # Analysis
