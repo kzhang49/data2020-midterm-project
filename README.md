@@ -47,34 +47,48 @@ We can see that there is a positive relationship between % commuting along a car
   - **Visualization**: We use census_tract_loc.csv which contains latitude, longitude, county and state to generate an interactive geo graph.
 
 # Analysis
+
   - **Simple Linear Regression**
+  
   We use simple linear regression to fit median of household income, the result and plot we get is:
 ![alt text](https://i.imgur.com/jHPqtOL.png)
 ![alt text](https://i.imgur.com/E2ta2uE.png)
 The adjusted R-squared for linear regression is 0.8534, which indicates our linear model for the median of household income is relatively good.
+
   - **Ridge Regression**:
+  
     - **Median of household income**
+    
     After selecting 19 relevant features as our predictors, we would like to further improve our prediction by utilizing regularized term, lambda. We separated the dataset into training data and testing data, fitted ridge regression model onto the training data, and predicted the Income for testing data. Still utilizing the 19 relevant predictors,  we calculated the MSE as the criteria to determine the optimal prediction model. As a result, the MSE is 117,376,314 using a 5-fold cross validation process. 
     ![alt text](https://i.imgur.com/8wURzU0.png)
+    
     - **Income per capita**
+    
     At the same time, we fitted ridge regression on income per capita with the 19 predictors. We received an MSE of 34,693,520, which is smaller than the MSE on income. 
     ![alt text](https://i.imgur.com/TVLpCe9.png)
     
   - **Lasso Regression**:
     - **Median of household income**
+    
     We used L2 regularization of ridge regression model previously, and we would like to compare the model with L1 regularization of lasso regression model, since different regularized terms affect predictions. In order to make the comparison, we again kept 19 predictors as our features. After a 5-fold cross validation, we determined the MSE is 106,552,141. Comparing the MSE with ridge regression, lasso regression is more accurate for Income prediction. The reason maybe that L2 regression penalizes large values disproportionately; however L1 regression is “indifferent” about the large values. Since the income for each geolocation is at least thousands or ten thousands, we are more likely to penalize income under ridge regression.
     ![alt text](https://i.imgur.com/KPP4uRE.png)
+    
     - **Income per capita**
+    
     We applied the same 19 predictors to lasso regression in order to predict for income per capita. The MSE is 32,693,923, which is again smaller than the MSE of ridge regression (34,693,520). Since income per capita is quite large as well, lasso performs slightly better than the ridge regression. 
     ![alt text](https://i.imgur.com/SqwLS6F.png)
     
   - **Stepwise Regression**:
+  
     - **Median of household income**
+    
     Stepwise method is an efficient way to find the significant predictors by using known trained data points. Upon fitting the key predictors onto the test data, we are able to predict the unknown Income level using these predictors. In detail, with the forward stepwise method, we selected the best subset of 11 predictors out of the total 19 predictors that have a greater impact on Income level. They are “County”,  “Hispanic”,  “Black”, “Citizen”,  “Poverty”, “ Professional”, “Drive”, “Walk”, “OtherTransp”, “WorkAtHome”,  and “PublicWork”. We applied cross validation and received a MSE of 210,167,539. However, without interaction terms, log transformation, and regularization terms, the MSE is more than 10 times larger comparing to MSE of lasso and ridge regression models. 
+    
     - **Income per capita**
+    
     For Income Per capita, we also duplicated the stepwise forward method utilizing the 19 predictors. The model displayed 15 most influential predictors: “ County”, “Hispanic”, “Black”, “Citizen”, “Poverty”, “Professional”, “Production”, “Carpool”,  “Walk”, “OtherTransp”, “WorkAtHome”, “MeanCommute”, “PublicWork”, “SelfEmployed”, and “Unemployment”. As a result, the optimal MSE is 168,289,557. Comparing to Income prediction, Income per capita has a lower MSE in stepwise forward model. The 5 additional predictors that are significant to Income per capita are “Production”, “Carpool”, “MeanCommute”, “SelfEmployed”, and “Unemployment”, and 1 insignificant predictor that is influential to Income above is “Drive”. 
     
-    Comparing the MSE of these models, we choose Lasso regression to do the prediction.
+    **_Comparing the MSE of these models, we choose Lasso regression to do the prediction._**
     
 # Visualization
   [**Click here to open map link**](https://kzhang49.github.io/data2020-midterm-project/map.html)
