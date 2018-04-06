@@ -1,0 +1,171 @@
+```{r}
+nyc_census <- read.csv("~/Library/Mobile Documents/com~apple~CloudDocs/study/midterm/nyc_census.csv")
+dim(nyc_census)
+nyc <- nyc_census[complete.cases(nyc_census), ]
+dim(nyc)
+```
+```{r}
+unique(nyc$County)
+nyc$County = as.numeric(factor(nyc$County), levels = c("Bronx", "Kings", "New York","Queens", "Richmond"))
+nyc$Borough = as.numeric(factor(nyc$Borough), levels = c("Bronx", "Kings", "New York", "Queens", "Richmond"))
+dim(nyc)
+```
+```{r}
+#cor(nyc)
+
+#########################delete variable###############################
+d = c('CensusTract','Borough', 'Men', 'Women','White', 'TotalPop','Native', 'PrivateWork','Asian','ChildPoverty','Transit','FamilyWork', 'Employed','IncomePerCapErr','IncomeErr')
+nyc = nyc[ , !(names(nyc) %in% d)]
+dim(nyc)
+
+```
+```{r}
+# linear regression
+fit_med = lm(nyc$Income~ .-nyc$Income, data = nyc)
+summary(fit_med)
+plot(fit_med)
+```
+
+```{r}
+income_per_cap = nyc$IncomePerCap
+fit_cap = lm(nyc$IncomePerCap ~ .-nyc$IncomePerCap, data = nyc)
+summary(fit_cap)
+#plot(fit_cap)
+```
+
+
+```{r}
+# take log
+```
+
+```{r}
+# transformation
+```
+
+
+```{r}
+# stepwise 
+library(leaps)
+train=sample(c(TRUE,FALSE),nrow(nyc),rep=TRUE)
+c = data.frame(nyc$County)
+dim(c)
+test=(!train)
+#Find best model by finding the error on the number of variables
+regfit.fwd=regsubsets(income~., data=nyc, nvmax=23,method='forward')
+data=data.frame(nyc[train,])
+print(dim(data))
+print(data$County)
+regfit.fwd.train=regsubsets(income~., data=data.frame(c(nyc[train,])),nvmax = 23, method='forward')
+#regfit.fwd.train
+#test.mat=model.matrix(income~.,data=nyc[test,])
+#val.errors=rep(NA,30)
+#for (i in 1:30){
+#  coef=coef(regfit.fwd.train,id=i)
+#  pred=test.mat[,names(coef)]%*%coef
+#  val.errors[i]=mean((iod_2$GFR[test]-pred)^2)
+#}
+
+#which.min(val.errors)
+```
+
+```{r}
+# ridge for income
+library(glmnet)
+grid=10^seq(10,-2,length=100)    #Grid of lambda values
+x=model.matrix(nyc$Income ~ .,nyc)[,-1]
+y=nyc$Income
+ridge.mod=glmnet(x,y,alpha=0,lambda=grid)   #Run ridge regression for this grid
+dim(coef(ridge.mod))
+#Split into training set and test set to estimate test error
+set.seed(1)
+train=sample(1:nrow(x), nrow(x)/2)
+test=(-train)
+y.test=y[test]
+
+#Now use CV to find best lambda
+set.seed(1)
+cv.out=cv.glmnet(x[train,],y[train],alpha=0,nfolds=10)
+plot(cv.out)
+bestlam=cv.out$lambda.min   #Lambda with minimum MSE
+print("Best lambda")
+bestlam
+ridge.pred=predict(ridge.mod,s=bestlam,newx=x[test,])
+print("MSE:")
+mean((ridge.pred-y.test)^2)  #Test MSE associated with smallest lambda
+out=glmnet(x,y,alpha=0)
+predict(out,type="coefficients",s=bestlam)[1:19,]  #Now get ridge coefficients for model with best lambda
+```
+
+
+```{r}
+# lasso for income
+lasso.mod=glmnet(x[train,],y[train],alpha=1,lambda=grid)
+set.seed(1)
+# use cross validataion
+cv.out=cv.glmnet(x[train,],y[train],alpha=1)
+plot(cv.out)
+
+# get best lambda
+bestlam=cv.out$lambda.min
+bestlam
+lasso.pred=predict(lasso.mod,s=bestlam,newx=x[test,])
+print("MSE")
+mean((lasso.pred-y.test)^2)
+out=glmnet(x,y,alpha=1,lambda=grid)
+
+# get coeffcients
+lasso.coef=predict(out,type="coefficients",s=bestlam)[1:19,]
+lasso.coef
+lasso.coef[lasso.coef!=0]
+```
+
+```{r}
+# ridge for income per capita
+library(glmnet)
+grid=10^seq(10,-2,length=100)    #Grid of lambda values
+x=model.matrix(nyc$IncomePerCap ~ .,nyc)[,-1]
+y=nyc$IncomePerCap
+ridge.mod=glmnet(x,y,alpha=0,lambda=grid)   #Run ridge regression for this grid
+dim(coef(ridge.mod))
+#Split into training set and test set to estimate test error
+set.seed(1)
+train=sample(1:nrow(x), nrow(x)/2)
+test=(-train)
+y.test=y[test]
+
+#Now use CV to find best lambda
+set.seed(1)
+cv.out=cv.glmnet(x[train,],y[train],alpha=0,nfolds=10)
+plot(cv.out)
+bestlam=cv.out$lambda.min   #Lambda with minimum MSE
+bestlam
+ridge.pred=predict(ridge.mod,s=bestlam,newx=x[test,])
+print("MSE")
+mean((ridge.pred-y.test)^2) #Test MSE associated with smallest lambda
+out=glmnet(x,y,alpha=0)
+predict(out,type="coefficients",s=bestlam)[1:19,]  #Now get ridge coefficients for model with best lambda
+```
+
+
+```{r}
+# lasso for income per capita
+lasso.mod=glmnet(x[train,],y[train],alpha=1,lambda=grid)
+set.seed(1)
+# use cross validataion
+cv.out=cv.glmnet(x[train,],y[train],alpha=1)
+plot(cv.out)
+
+# get best lambda
+bestlam=cv.out$lambda.min
+bestlam
+lasso.pred=predict(lasso.mod,s=bestlam,newx=x[test,])
+print("MSE")
+mean((lasso.pred-y.test)^2)
+out=glmnet(x,y,alpha=1,lambda=grid)
+
+# get coeffcients
+lasso.coef=predict(out,type="coefficients",s=bestlam)[1:19,]
+lasso.coef
+lasso.coef[lasso.coef!=0]
+```
+
