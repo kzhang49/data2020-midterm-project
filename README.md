@@ -11,14 +11,14 @@
 First, we explored the relationships between the features and the target: Income. We picked some features that we think are important, and draw graphs to better demonstrate the relationships. 
 
 1) Income: The income is distributed as below.
-![](https://github.com/kzhang49/data2020-midterm-project/blob/master/pics/Income.png)
+![alt text](https://github.com/kzhang49/data2020-midterm-project/blob/master/pics/Income.png)
 The five counties, Bronx, Kings, New York, Queens and Richmond are represented by label “1, 2, 3, 4, 5”. We can see that New York has highest income and the distribution of its income is more spread out than others. While Bronx and Richmond have relatively lower income. We can tell that County is a good candidate for the features we can use in the model.
 
 2) Poverty and ChildPoverty: The Poverty and ChildPoverty are distributed as below.
 ![alt text](https://github.com/kzhang49/data2020-midterm-project/blob/master/pics/Poverty.png)
-![](https://github.com/kzhang49/data2020-midterm-project/blob/master/pics/ChildPoverty.png)
+![alt text](https://github.com/kzhang49/data2020-midterm-project/blob/master/pics/ChildPoverty.png)
 We can see from the graphs that the shape of Poverty and ChildPoverty to Income are very similar. We could consider there would be a correlation between Poverty and ChildPoverty. And the confirmed our inference as following:
-![alt text](https://github.com/kzhang49/data2020-midterm-project/blob/master/pics/Poverty-vs-ChildPoverty.png)
+[[https://github.com/kzhang49/data2020-midterm-project/blob/master/pics/Poverty-vs-ChildPoverty.png]]
 There is a linear relationship between Poverty and ChildPoverty. We would consider remove one of the features in our model.
 
 3) Service & Professional: The Service is distributed as below.
