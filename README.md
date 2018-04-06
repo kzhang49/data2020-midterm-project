@@ -5,6 +5,7 @@ You can use the [editor on GitHub](https://github.com/kzhang49/data2020-midterm-
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
 ### Markdown
+[map](https://kzhang49.github.io/data2020-midterm-project/map.html)
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
