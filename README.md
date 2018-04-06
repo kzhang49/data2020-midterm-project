@@ -19,8 +19,8 @@
     - Simple Linear Regression
     - Ridge Regression
     - Lasso Regression
-    - Stepwise Regression
-  
+    - Stepwise Regression<br />
+    
   - **Visualization**: We use census_tract_loc.csv which contains latitude, longitude, county and state to generate an interactive geo graph.
 
 # Analysis
