@@ -11,7 +11,8 @@
 First, we explored the relationships between the features and the target: Income. We picked some features that we think are important, and draw graphs to better demonstrate the relationships. 
 
 1) Income: The income is distributed as below.
-![](https://www.nationalgeographic.com/animals/mammals/d/domestic-dog/#/domestic-dog.jpg)
+<img src="https://github.com/kzhang49/data2020-midterm-project/blob/master/pics/Income.png" alt="">   
+
 ![alt text](https://github.com/kzhang49/data2020-midterm-project/blob/master/pics/Income.png)
 The five counties, Bronx, Kings, New York, Queens and Richmond are represented by label “1, 2, 3, 4, 5”. We can see that New York has highest income and the distribution of its income is more spread out than others. While Bronx and Richmond have relatively lower income. We can tell that County is a good candidate for the features we can use in the model.
 
