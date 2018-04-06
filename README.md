@@ -26,7 +26,7 @@ There is a linear relationship between Poverty and ChildPoverty. We would consid
 3) Service & Professional: The Service is distributed as below.
 ![alt text](https://i.imgur.com/0FRB7rY.png)
 We can see that there seems a linear relationship between Service and Income. The lower % employed in service jobs, the higher the income is. People who work in service jobs tend to have lower salary. We infer that with higher % employed in professional jobs, the income should be higher, and we confirmed our thoughts as followed. We can see from the figure below that Professional and Income do have a positive relationship.
-![alt text](https://i.imgur.com/v3JdaP3.png)
+![alt text](https://i.imgur.com/o4t62r7.png)
 
 4) Drive: The Drive is distributed as following.
 ![alt text](https://i.imgur.com/xA68cJi.png)
