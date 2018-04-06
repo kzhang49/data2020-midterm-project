@@ -18,6 +18,8 @@ The five counties, Bronx, Kings, New York, Queens and Richmond are represented b
 ![alt text](https://github.com/kzhang49/data2020-midterm-project/blob/master/pics/Poverty.png)
 ![alt text](https://github.com/kzhang49/data2020-midterm-project/blob/master/pics/ChildPoverty.png)
 We can see from the graphs that the shape of Poverty and ChildPoverty to Income are very similar. We could consider there would be a correlation between Poverty and ChildPoverty. And the confirmed our inference as following:
+<img src="pics/Poverty-vs-ChildPoverty.png" alt="hi" class="inline"/>
+
 [[https://github.com/kzhang49/data2020-midterm-project/blob/master/pics/Poverty-vs-ChildPoverty.png]]
 There is a linear relationship between Poverty and ChildPoverty. We would consider remove one of the features in our model.
 
