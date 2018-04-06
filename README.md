@@ -1,38 +1,18 @@
-## Welcome to GitHub Pages
+# Overview
+Our data is a census tracts in New York City. It shows the income level, total population, race, poverty level and different types of jobs in New York City and surrounding area. We are trying to figure out which of these features affect the median household income and income per capita. We sought to predict the income level based on useful information like population, job positions and other useful features. In addition, we are trying to investigate these questions:
+- Which area has higher income per capita?
+- Which area has higher unemployment rate?
+- Can we integrate these useful features into some predictive models that would predict income level and income per capita in the future?
+- What is the relationship between race and median household income?
 
-You can use the [editor on GitHub](https://github.com/kzhang49/data2020-midterm-project/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+We wanted to answer these questions after studying and visualizing this data.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+# Exploratory Analysis
 
-### Markdown
+# Methodology
+
+# Analysis
+
+# Visualization
 [map](https://kzhang49.github.io/data2020-midterm-project/map.html)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/kzhang49/data2020-midterm-project/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
