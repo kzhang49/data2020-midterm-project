@@ -16,21 +16,20 @@ First, we explored the relationships between the features and the target: Income
 The five counties, Bronx, Kings, New York, Queens and Richmond are represented by label “1, 2, 3, 4, 5”. We can see that New York has highest income and the distribution of its income is more spread out than others. While Bronx and Richmond have relatively lower income. We can tell that County is a good candidate for the features we can use in the model.
 
 2) Poverty and ChildPoverty: The Poverty and ChildPoverty are distributed as below.
-![alt text](https://github.com/kzhang49/data2020-midterm-project/blob/master/pics/Poverty.png)
-![alt text](https://github.com/kzhang49/data2020-midterm-project/blob/master/pics/ChildPoverty.png)
+![alt text](https://i.imgur.com/FoQQdtr.png)
+![alt text](https://i.imgur.com/Km5oqIz.png)
 We can see from the graphs that the shape of Poverty and ChildPoverty to Income are very similar. We could consider there would be a correlation between Poverty and ChildPoverty. And the confirmed our inference as following:
-<img src="pics/Poverty-vs-ChildPoverty.png" alt="hi" class="inline"/>
 
-[[https://github.com/kzhang49/data2020-midterm-project/blob/master/pics/Poverty-vs-ChildPoverty.png]]
+![alt text](https://i.imgur.com/C95WzQv.png)
 There is a linear relationship between Poverty and ChildPoverty. We would consider remove one of the features in our model.
 
 3) Service & Professional: The Service is distributed as below.
-![alt text](https://github.com/kzhang49/data2020-midterm-project/blob/master/pics/Service.png)
+![alt text](https://i.imgur.com/0FRB7rY.png)
 We can see that there seems a linear relationship between Service and Income. The lower % employed in service jobs, the higher the income is. People who work in service jobs tend to have lower salary. We infer that with higher % employed in professional jobs, the income should be higher, and we confirmed our thoughts as followed. We can see from the figure below that Professional and Income do have a positive relationship.
-![alt text](https://github.com/kzhang49/data2020-midterm-project/blob/master/pics/Professional.png)
+![alt text](https://i.imgur.com/v3JdaP3.png)
 
 4) Drive: The Drive is distributed as following.
-![alt text](https://github.com/kzhang49/data2020-midterm-project/blob/master/pics/Drive.png)
+![alt text](https://i.imgur.com/xA68cJi.png)
 We can see that there is a positive relationship between % commuting along a car, van or truck and the income. It is easy to understand that people can afford of buying cars are more likely to be richer. The outliers are very likely to be the New York. Most people who live in New York do not have cars because driving is too difficult in Manhattan, but they still have high income so that they can afford of living in Manhattan.
 
 
